@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assert.cs" />
-    <Compile Include="ConsoleReporter.cs" />
+    <Compile Include="MyConsoleReporter.cs" />
     <Compile Include="ContextSpecification.cs" />
     <Compile Include="CustomHtmlReportConfiguration.cs" />
     <Compile Include="CustomStory.cs" />
