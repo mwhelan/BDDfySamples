@@ -4,17 +4,17 @@ using TestStack.BDDfy.Scanners;
 
 namespace BDDfySamples.CustomFramework
 {
-public class StoryMetaDataScanner : IStoryMetaDataScanner
-{
-    public StoryMetaData Scan(object testObject, Type explicitStoryType = null)
+    public class StoryMetaDataScanner : IStoryMetaDataScanner
     {
-        var specification = testObject as ContextSpecification;
-        if (specification == null)
-            return null;
+        public StoryMetaData Scan(object testObject, Type explicitStoryType = null)
+        {
+            var specification = testObject as ContextSpecification;
+            if (specification == null)
+                return null;
 
-        var story = specification.Story;
+            var story = specification.Story;
 
-        return new StoryMetaData(story.GetType(), story.AsA, story.IWant, story.SoThat, story.Title);
+            return new StoryMetaData(story.GetType(), story.AsA, story.IWant, story.SoThat, story.Title);
+        }
     }
-}
 }

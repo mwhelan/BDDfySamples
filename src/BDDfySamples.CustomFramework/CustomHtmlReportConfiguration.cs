@@ -19,5 +19,13 @@ namespace BDDfySamples.CustomFramework
                 return "A simple context specification framework for .Net developers";
             }
         }
+
+        public override string OutputFileName
+        {
+            get
+            {
+                return "ContextSpecifications.html";
+            }
+        }
     }
 }

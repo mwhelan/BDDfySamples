@@ -5,6 +5,11 @@
         private Card _card;
         private Atm _atm;
 
+        public WhenAccountHasInsufficientFunds()
+        {
+            ScenarioTitle = "When account funds are less than zero";
+        }
+
         protected override void EstablishContext()
         {
             _card = new Card(true, 10);

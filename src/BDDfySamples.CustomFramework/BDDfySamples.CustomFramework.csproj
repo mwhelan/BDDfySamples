@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BDDfySamples.CustomFramework</RootNamespace>
     <AssemblyName>BDDfySamples.CustomFramework</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assert.cs" />
+    <Compile Include="ConsoleReporter.cs" />
     <Compile Include="ContextSpecification.cs" />
     <Compile Include="CustomHtmlReportConfiguration.cs" />
     <Compile Include="CustomStory.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="StoryMetaDataScanner.cs" />
+    <Compile Include="TestRunner.cs" />
     <Compile Include="Tests\Atm\Atm.cs" />
     <Compile Include="ContextSpecificationStepScanner.cs" />
     <Compile Include="Program.cs" />
