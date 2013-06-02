@@ -1,4 +1,6 @@
-﻿namespace BDDfySamples.CustomFramework.Tests.Atm
+﻿using BDDfySamples.CustomFramework.Core;
+
+namespace BDDfySamples.CustomFramework.Tests.Atm
 {
     public class WhenCardHasBeenDisabled : ContextSpecification
     {
@@ -16,7 +18,7 @@
             _atm.RequestMoney(_card, 20);
         }
 
-        public override CustomStory Story
+        public override UserStory Story
         {
             get { return new AtmWithdrawCashStory(); }
         }

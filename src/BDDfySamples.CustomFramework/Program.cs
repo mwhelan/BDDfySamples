@@ -1,4 +1,7 @@
 ﻿using System;
+using BDDfySamples.CustomFramework.Configuration;
+using BDDfySamples.CustomFramework.Core;
+using BDDfySamples.CustomFramework.Scanners;
 using TestStack.BDDfy.Configuration;
 using TestStack.BDDfy.Processors.HtmlReporter;
 
