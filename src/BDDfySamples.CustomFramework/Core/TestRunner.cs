@@ -29,7 +29,7 @@ namespace BDDfySamples.CustomFramework.Core
             //new WhenCardHasBeenDisabled().BDDfy();
             //new WhenAccountHasSufficientFunds().BDDfy();
 
-            GetSpecs().Each(spec => spec.Run());
+            GetSpecs().Each(spec => SafeRunSpec(spec));
         }
 
         private void RunTestsInParallel()
@@ -40,7 +40,18 @@ namespace BDDfySamples.CustomFramework.Core
             List<ContextSpecification> theSpecs = GetSpecs();
             var batch = theSpecs.Batch(2);
 
-            Parallel.ForEach(batch, specs => specs.Each(spec => spec.Run()));
+            Parallel.ForEach(batch, specs => specs.Each(spec => SafeRunSpec(spec)));
+        }
+
+        private void SafeRunSpec(ContextSpecification spec)
+        {
+            try
+            {
+                spec.Run();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void RunBatchProcessors()
