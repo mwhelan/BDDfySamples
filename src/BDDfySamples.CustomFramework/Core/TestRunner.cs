@@ -10,17 +10,28 @@ namespace BDDfySamples.CustomFramework.Core
 {
     public class TestRunner
     {
-        public void Run(bool inParallel = false)
+        public void Run(int batchSize = 0)
         {
-            if (inParallel)
-            {
-                RunTestsInParallel();
-            }
-            else
+            if (batchSize == 0)
             {
                 RunTestsSequentially();
             }
+            else
+            {
+                RunTestsInParallel(batchSize);
+            }
             RunBatchProcessors();
+        }
+
+        private void RunTestsInParallel(int batchSize)
+        {
+            Configurator.Processors.ConsoleReport.Disable();
+            Configurator.BatchProcessors.Add(new BatchConsoleReporter());
+
+            List<ContextSpecification> theSpecs = GetSpecs();
+            var batch = theSpecs.Batch(batchSize);
+
+            Parallel.ForEach(batch, specs => specs.Each(spec => SafeRunSpec(spec)));
         }
 
         private void RunTestsSequentially()
@@ -30,17 +41,6 @@ namespace BDDfySamples.CustomFramework.Core
             //new WhenAccountHasSufficientFunds().BDDfy();
 
             GetSpecs().Each(spec => SafeRunSpec(spec));
-        }
-
-        private void RunTestsInParallel()
-        {
-            Configurator.Processors.ConsoleReport.Disable();
-            Configurator.BatchProcessors.Add(new BatchConsoleReporter());
-
-            List<ContextSpecification> theSpecs = GetSpecs();
-            var batch = theSpecs.Batch(2);
-
-            Parallel.ForEach(batch, specs => specs.Each(spec => SafeRunSpec(spec)));
         }
 
         private void SafeRunSpec(ContextSpecification spec)
